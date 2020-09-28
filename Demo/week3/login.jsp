@@ -1,11 +1,11 @@
-<%@ page contentType="text/heml;charset=gb2312"%>
+<%@ page contentType="text/html;charset=utf-8"%>
 <html>
     <body>
         <form method=get action=checklogin.jsp>
             <table>
                 <tr>
                     <td>输入用户名：</td>
-                    <td><input type=text name=name value=<%=requeset.getParameter("name")%>></td>
+                    <td><input type=text name=name %></td>
                 </tr>
                 <tr>
                     <td>输入密码：</td>
