@@ -7,6 +7,7 @@
     File f = new File(fileName);
     BufferedReader buf = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
     String str = buf.readLine();
+
 %>
     <h3><%=str%></h3>
 <%
