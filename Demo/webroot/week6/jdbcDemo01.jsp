@@ -51,12 +51,12 @@
     {
         stmt.close();
         conn.close();
+        out.println("成功修改了数据库"+"\n");
     }
     catch(Exception e)
     {
         out.println("数据库关闭失败!!!"+e+"\n");
     }
-    out.println("成功修改了数据库"+"\n");
 %>
 </body>
 </html>

@@ -20,14 +20,26 @@
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/test1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT","root","chaoyue123");
-            Statement stmt = conn.createStatement();
-            String sql = "select * from users where username='" + username + "'";
-            sql += " and password = '" + password + "'";
-            ResultSet rs = stmt.executeQuery(sql);
+
+            //防止注入
+
+            String sql = "select * from users  where username = ? and password = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.setString(2,password);
+
+
+            ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 session.setAttribute("login","ok");
                 session.setAttribute("uname",username);
 %>
+<%--
+    Statement stmt = conn.createStatement();
+    String sql = "select * from users where username='" + username + "'";
+    sql += " and password = '" + password + "'";
+    ResultSet rs = stmt.executeQuery(sql);
+--%>
                 <jsp:forward page="main.jsp"/>
 <%
             }
